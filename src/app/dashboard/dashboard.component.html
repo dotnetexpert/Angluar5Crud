@@ -1,0 +1,91 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title"><button (click)="newPost()" class="btn btn-sucess btn-sm mat-raised-button"
+                                mat-raised-button=""><span class="mat-button-wrapper">Add Post</span>
+                                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                <div class="mat-button-focus-overlay"></div>
+                            </button></h4>
+
+
+                    </div>
+
+                    <form class="dashboard-form " *ngIf="displayForm == true" class="ng-untouched ng-pristine ng-valid">
+                        <div class="p30">
+                            <div class="row mb20">
+                                <div class="input-group no-border col-md-6">
+                                    <input type="text" name="title" value="" class="form-control" placeholder="Title content.."
+                                        [(ngModel)]="post.title">
+
+                                </div>
+                                <!-- <div class="input-group no-border col-md-6">
+                                    <input type="text" name="body" value="" class="form-control" placeholder="Body content.."
+                                        [(ngModel)]="post.body">
+                                </div> -->
+                            </div>
+                            <div class="row mb20">
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" placeholder="Body content .." [(ngModel)]="post.body"
+                                        name="body">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 text-right">
+                                    <button (click)="saveUpdatePost($event, post)" class="btn btn-info btn-sm mat-raised-button"
+                                        mat-raised-button=""><span class="mat-button-wrapper">Save</span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </button>
+                                    <button (click)="cancelPost()" class="btn btn-danger btn-sm mat-raised-button"
+                                        mat-raised-button=""><span class="mat-button-wrapper">Cancel</span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                    <div class="card-body" *ngIf="displayForm != true">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th class="mw100">Post Id </th>
+                                    <th>Title</th>
+                                    <th> Body </th>
+                                    <th class="mw200"> Action</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let post of posts$">
+                                        <td> {{post.id}} </td>
+                                        <td> {{post.title}}</td>
+                                        <td>{{post.body}}</td>
+                                        <td>
+                                            <button (click)="editPost($event, post)" class="btn btn-sm btn-info mat-raised-button"
+                                                mat-raised-button=""><span class="mat-button-wrapper">Edit</span>
+                                                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                                <div class="mat-button-focus-overlay"></div>
+                                            </button>
+
+                                            <button (click)="deletePost($event, post)" class="btn btn-danger btn-sm mat-raised-button"
+                                                mat-raised-button=""><span class="mat-button-wrapper">Delete</span>
+                                                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                                <div class="mat-button-focus-overlay"></div>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
